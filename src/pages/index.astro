@@ -3,11 +3,343 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Handgemachte Einzelstücke</p>
+      <h1>Design aus Epoxidharz und 3D-Druck</h1>
+      <p class="lead">
+        Von liebevollen Dekostücken bis zu modernen Wohnaccessoires:
+        ShineAndJoy verbindet Kreativität, Handarbeit und besondere Formen.
+      </p>
 
-<h2>Willkommen bei ShineAndJoy</h2>
+      <div class="hero-buttons">
+        <a href="/galerie" class="btn btn-primary">Produkte ansehen</a>
+        <a href="/kontakt" class="btn btn-secondary">Anfrage senden</a>
+      </div>
+    </div>
 
-<p>
-Handgemachte Epoxidharz- und 3D-Druck Produkte.
-</p>
+    <div class="hero-image">
+      <img src="/images/Eier.jpeg" alt="Dekorative grüne Osterfiguren von ShineAndJoy" />
+    </div>
+  </section>
 
+  <section class="intro">
+    <div class="intro-card">
+      <h2>Besondere Stücke mit Charakter</h2>
+      <p>
+        Jedes Produkt wird mit viel Liebe gestaltet. Ob saisonale Deko,
+        moderne Badezimmer-Sets, Untersetzer, kleine Geschenkideen oder
+        individuelle Anfertigungen – jedes Stück soll Freude machen und
+        optisch herausstechen.
+      </p>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="section-heading">
+      <p class="eyebrow">Kategorien</p>
+      <h2>Was du bei ShineAndJoy findest</h2>
+    </div>
+
+    <div class="category-grid">
+      <article class="category-card">
+        <img src="/images/MiniHasen.jpeg" alt="Kleine Hasenfiguren aus Epoxidharz" />
+        <div class="category-content">
+          <h3>Dekoration & Saisonartikel</h3>
+          <p>Kleine Figuren, Osterdeko und besondere Hingucker für Zuhause.</p>
+        </div>
+      </article>
+
+      <article class="category-card">
+        <img src="/images/Badezimmerkombi.jpeg" alt="Badezimmer-Set in dunkler Marmoroptik" />
+        <div class="category-content">
+          <h3>Wohn- & Badezimmer-Accessoires</h3>
+          <p>Moderne Sets, Seifenspender, Behälter und stilvolle Deko.</p>
+        </div>
+      </article>
+
+      <article class="category-card">
+        <img src="/images/3dEier.jpeg" alt="3D-gedruckte bunte Dekoeier" />
+        <div class="category-content">
+          <h3>3D-Druck Designs</h3>
+          <p>Kreative Formen, moderne Strukturen und farbenfrohe Einzelstücke.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="highlights">
+    <div class="section-heading">
+      <p class="eyebrow">Highlights</p>
+      <h2>Ausgewählte Lieblingsstücke</h2>
+    </div>
+
+    <div class="highlight-grid">
+      <article class="highlight-card large">
+        <img src="/images/Vasen.jpeg" alt="Herzförmige Vasen und Dekoobjekte aus Epoxidharz" />
+      </article>
+
+      <article class="highlight-card">
+        <img src="/images/Untersetzer.jpeg" alt="Untersetzer und Halter in heller Marmoroptik" />
+      </article>
+
+      <article class="highlight-card">
+        <img src="/images/Badezimmerkombi2.jpeg" alt="Helles Badezimmer-Set aus Epoxidharz" />
+      </article>
+    </div>
+  </section>
+
+  <section class="gallery-preview">
+    <div class="section-heading">
+      <p class="eyebrow">Galerie</p>
+      <h2>Einblicke in die Produktwelt</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <img src="/images/Eier.jpeg" alt="Grüne Osterdekoration" />
+      <img src="/images/MiniHasen.jpeg" alt="Bunte Hasenfiguren" />
+      <img src="/images/3dEier.jpeg" alt="3D-gedruckte Dekoeier" />
+      <img src="/images/Badezimmerkombi.jpeg" alt="Dunkles Badezimmer-Set" />
+      <img src="/images/Badezimmerkombi2.jpeg" alt="Helles Badezimmer-Set" />
+      <img src="/images/Untersetzer.jpeg" alt="Untersetzer in Steinoptik" />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-box">
+      <p class="eyebrow">Individuelle Wünsche</p>
+      <h2>Sonderanfertigungen auf Anfrage</h2>
+      <p>
+        Du suchst ein personalisiertes Geschenk oder ein passendes Design
+        für dein Zuhause? Gerne erstelle ich individuelle Stücke nach Wunsch.
+      </p>
+      <a href="/kontakt" class="btn btn-primary">Jetzt anfragen</a>
+    </div>
+  </section>
 </MainLayout>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f6f1ea;
+    color: #1d1d1d;
+  }
+
+  :global(main) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 36px 0 56px;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: #7a6a5a;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 3.4rem;
+    line-height: 1.05;
+    margin: 0 0 18px;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+    margin: 0 0 14px;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin: 0 0 8px;
+  }
+
+  .lead {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 26px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+  }
+
+  .btn-primary {
+    background: #1f1f1f;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    border: 1px solid #1f1f1f;
+    color: #1f1f1f;
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    background: #ece4da;
+  }
+
+  .hero-image img,
+  .category-card img,
+  .highlight-card img,
+  .gallery-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-image img {
+    height: 680px;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .intro {
+    margin: 18px 0 60px;
+  }
+
+  .intro-card,
+  .cta-box {
+    background: #fffaf4;
+    border-radius: 26px;
+    padding: 34px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  }
+
+  .intro-card p,
+  .cta-box p,
+  .category-content p {
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .categories,
+  .highlights,
+  .gallery-preview,
+  .cta {
+    margin-top: 70px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .category-card,
+  .highlight-card {
+    background: #fffaf4;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  }
+
+  .category-card img {
+  height: 320px;
+  transition: transform 0.3s ease;
+  }
+
+  .category-card:hover img {
+  transform: scale(1.05);
+  }
+
+  .highlight-card img {
+  transition: transform 0.3s ease;
+  }
+
+  .highlight-card:hover img {
+  transform: scale(1.05);
+  }
+
+  .category-content {
+    padding: 22px;
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr 1fr;
+    gap: 22px;
+  }
+
+  .highlight-card img {
+    height: 100%;
+    min-height: 320px;
+  }
+
+  .highlight-card.large img {
+    min-height: 664px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .gallery-grid img {
+    height: 280px;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  .cta-box {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .cta-box .btn {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .hero,
+    .category-grid,
+    .highlight-grid,
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-image img,
+    .highlight-card.large img,
+    .highlight-card img,
+    .category-card img,
+    .gallery-grid img {
+      height: auto;
+      min-height: unset;
+    }
+  }
+</style>
