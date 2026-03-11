@@ -1,23 +1,45 @@
 ---
+import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+const { title = "ShineAndJoy" } = Astro.props;
 ---
-
-<html>
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
-    <title>ShineAndJoy</title>
-  </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
 
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+</head>
   <body>
-
     <Header />
-
     <main>
       <slot />
     </main>
-
     <Footer />
-
   </body>
 </html>
+
+<style is:global>
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #1d1d1d;
+    background-image: url("/images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+</style>

@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  color: #1d1d1d;
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1, h2 {
+  font-family: "Great Vibes", cursive;
+  font-weight: normal;
+}
