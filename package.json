@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.0.0"
+    "astro": "^6.0.0",
+    "three": "^0.183.2",
+    "vanta": "^0.5.24"
   }
 }
