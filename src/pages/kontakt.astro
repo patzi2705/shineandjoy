@@ -1,53 +1,50 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-const { title = "ShineAndJoy" } = Astro.props;
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #3d4245;
-        color: white;
-        text-align: center;
-      }
+<MainLayout title="Kontakt">
+  <section class="contact">
+    <h1>Kontakt</h1>
 
-      main {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 120px 20px 80px;
-        box-sizing: border-box;
-      }
+    <p>Schreib uns gerne direkt:</p>
 
-      h1 {
-        font-size: 3rem;
-        letter-spacing: 2px;
-      }
+    <div class="buttons">
+      <a href="mailto:shineandjoy@gmail.com" class="btn">📧 E-Mail</a>
 
-      p {
-        margin-top: 20px;
-        color: #ccc;
-      }
-    </style>
-  </head>
+      <a href="https://wa.me/436645476454" class="btn" target="_blank">
+        💬 WhatsApp
+      </a>
 
-  <body>
-    <Header />
+      <a href="https://www.instagram.com/shineandjoy.bymk/" class="btn" target="_blank">
+        📸 Instagram
+      </a>
+    </div>
+  </section>
+</MainLayout>
 
-    <main>
-      <div>
-        <h1>DIESE SEITE<br />BEFINDET SICH<br />IM AUFBAU.</h1>
-        <p>THIS SITE IS UNDER CONSTRUCTION.</p>
-      </div>
-    </main>
+<style>
+  .contact {
+    text-align: center;
+    margin-top: 40px;
+  }
 
-    <Footer />
-  </body>
-</html>
+  .buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 14px 22px;
+    background: #1f1f1f;
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+  }
+</style>

@@ -1,53 +1,57 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 const { title = "ShineAndJoy" } = Astro.props;
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #3d4245;
-        color: white;
-        text-align: center;
-      }
+<MainLayout title="Über uns">
+  <section class="page">
+    <h1>Über uns</h1>
 
-      main {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 120px 20px 80px;
-        box-sizing: border-box;
-      }
+    <h2>Unsere Geschichte</h2>
+    <p>
+      Manchmal entstehen die besten Ideen ganz unerwartet – so auch unsere.
+      Während der Renovierung unseres Wohnraumes Ende 2025 entdeckten wir
+      außergewöhnliche Möbelstücke und Dekorationen, die uns sofort faszinierten.
+      Schnell entstand der Gedanke: Warum nicht selbst solche besonderen Stücke gestalten?
+    </p>
 
-      h1 {
-        font-size: 3rem;
-        letter-spacing: 2px;
-      }
+    <p>
+      Wir sind Michael und Martina – ein Ehepaar mit einer gemeinsamen Leidenschaft
+      für handgefertigte Unikate.
+    </p>
 
-      p {
-        margin-top: 20px;
-        color: #ccc;
-      }
-    </style>
-  </head>
+    <p>
+      Michael bringt seine Begeisterung für Technik und handwerkliche Arbeit in
+      individuell gestaltete Tische und Uhren ein.
+      Martina gestaltet mit viel Kreativität Dekoration und Schmuck aus Epoxidharz.
+    </p>
 
-  <body>
-    <Header />
+    <p>
+      Unterstützt werden wir von unserer Familie – besonders im Bereich Technik
+      und Social Media.
+    </p>
 
-    <main>
-      <div>
-        <h1>DIESE SEITE<br />BEFINDET SICH<br />IM AUFBAU.</h1>
-        <p>THIS SITE IS UNDER CONSTRUCTION.</p>
-      </div>
-    </main>
+    <p>
+      Jedes Produkt entsteht mit Herz, Leidenschaft und viel Handarbeit –
+      ein echtes Unikat.
+    </p>
+  </section>
+</MainLayout>
 
-    <Footer />
-  </body>
-</html>
+<style>
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
+</style>
