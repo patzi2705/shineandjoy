@@ -1,53 +1,87 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-const { title = "ShineAndJoy" } = Astro.props;
+import MainLayout from "../layouts/MainLayout.astro";
+import { galleryItems } from "../data/gallery";
+import "../styles/gallery.css";
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #3d4245;
-        color: white;
-        text-align: center;
-      }
+<MainLayout title="Galerie">
+  <section class="gallery-page">
 
-      main {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 120px 20px 80px;
-        box-sizing: border-box;
-      }
+    <h1>Galerie</h1>
 
-      h1 {
-        font-size: 3rem;
-        letter-spacing: 2px;
-      }
+    <!-- Suche -->
+    <input
+      type="text"
+      placeholder="Suche..."
+      class="search"
+      id="searchInput"
+    />
 
-      p {
-        margin-top: 20px;
-        color: #ccc;
-      }
-    </style>
-  </head>
+    <!-- Kategorien -->
+    <div class="filters">
+      <button data-category="Alle" class="active">Alle</button>
+      <button data-category="Ostern">Ostern</button>
+      <button data-category="Dekoration">Dekoration</button>
+      <button data-category="Badezimmer">Badezimmer</button>
+      <button data-category="Schmuck">Schmuck</button>
+      <button data-category="Geschenkkarten">Geschenkkarten</button>
+    </div>
 
-  <body>
-    <Header />
+    <!-- Grid -->
+    <div class="grid" id="galleryGrid">
+      {galleryItems.map(item => (
+        <div
+          class="card"
+          data-category={item.category}
+          data-title={item.title.toLowerCase()}
+        >
+          <img src={item.image} alt={item.title} />
+          <div class="overlay">
+            <p>{item.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
 
-    <main>
-      <div>
-        <h1>DIESE SEITE<br />BEFINDET SICH<br />IM AUFBAU.</h1>
-        <p>THIS SITE IS UNDER CONSTRUCTION.</p>
-      </div>
-    </main>
+  </section>
 
-    <Footer />
-  </body>
-</html>
+  <script is:inline>
+  const buttons = document.querySelectorAll(".filters button");
+  const cards = document.querySelectorAll(".card");
+  const searchInput = document.getElementById("searchInput");
+
+  let currentCategory = "Alle";
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      currentCategory = btn.dataset.category || "Alle";
+      filterItems();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      filterItems();
+    });
+  }
+
+  function filterItems() {
+    const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
+
+    cards.forEach((card) => {
+      const title = card.dataset.title || "";
+      const category = card.dataset.category || "";
+
+      const matchesSearch = title.includes(searchValue);
+      const matchesCategory =
+        currentCategory === "Alle" || category === currentCategory;
+
+      card.style.display = matchesSearch && matchesCategory ? "block" : "none";
+    });
+  }
+</script>
+</MainLayout>
+
