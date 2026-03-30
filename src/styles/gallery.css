@@ -74,6 +74,7 @@
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
   .card:hover .overlay {
@@ -91,4 +92,25 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  }
+
+  .lightbox {
+    border: none;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 250, 244, 0.98);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+  }
+
+  .lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .lightbox img {
+    display: block;
+    max-width: min(70vw, 700px);
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
   }

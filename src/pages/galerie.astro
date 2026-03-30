@@ -19,12 +19,12 @@ import "../styles/gallery.css";
 
     <!-- Kategorien -->
     <div class="filters">
-      <button data-category="Alle" class="active">Alle</button>
-      <button data-category="Ostern">Ostern</button>
-      <button data-category="Dekoration">Dekoration</button>
-      <button data-category="Badezimmer">Badezimmer</button>
-      <button data-category="Schmuck">Schmuck</button>
-      <button data-category="Geschenkkarten">Geschenkkarten</button>
+      <button type="button" data-category="Alle" class="active">Alle</button>
+      <button type="button" data-category="Ostern">Ostern</button>
+      <button type="button" data-category="Dekoration">Dekoration</button>
+      <button type="button" data-category="Badezimmer">Badezimmer</button>
+      <button type="button" data-category="Schmuck">Schmuck</button>
+      <button type="button" data-category="Geschenkkarten">Geschenkkarten</button>
     </div>
 
     <!-- Grid -->
@@ -43,45 +43,82 @@ import "../styles/gallery.css";
       ))}
     </div>
 
+    <dialog id="lightbox" class="lightbox">
+      <img id="lightbox-img" src="" alt="" />
+    </dialog>
+
   </section>
 
   <script is:inline>
-  const buttons = document.querySelectorAll(".filters button");
-  const cards = document.querySelectorAll(".card");
-  const searchInput = document.getElementById("searchInput");
+    window.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll(".filters button");
+      const cards = document.querySelectorAll(".card");
+      const searchInput = document.getElementById("searchInput");
 
-  let currentCategory = "Alle";
+      let currentCategory = "Alle";
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+      function filterItems() {
+        const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
 
-      currentCategory = btn.dataset.category || "Alle";
+        cards.forEach((card) => {
+          const title = card.dataset.title || "";
+          const category = card.dataset.category || "";
+
+          const matchesSearch = title.includes(searchValue);
+          const matchesCategory =
+            currentCategory === "Alle" || category === currentCategory;
+
+          card.style.display = matchesSearch && matchesCategory ? "" : "none";
+        });
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentCategory = btn.dataset.category || "Alle";
+          filterItems();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener("input", filterItems);
+      }
+
       filterItems();
     });
-  });
+  </script>
 
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      filterItems();
+  <script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      document.querySelectorAll(".card img").forEach((img) => {
+        img.addEventListener("click", () => {
+          if (lightbox && lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.showModal();
+          }
+        });
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+          const rect = lightbox.getBoundingClientRect();
+          const clickedInside =
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom;
+
+          if (!clickedInside) {
+            lightbox.close();
+          }
+        });
+      }
     });
-  }
-
-  function filterItems() {
-    const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
-
-    cards.forEach((card) => {
-      const title = card.dataset.title || "";
-      const category = card.dataset.category || "";
-
-      const matchesSearch = title.includes(searchValue);
-      const matchesCategory =
-        currentCategory === "Alle" || category === currentCategory;
-
-      card.style.display = matchesSearch && matchesCategory ? "block" : "none";
-    });
-  }
-</script>
+  </script>
 </MainLayout>
 
