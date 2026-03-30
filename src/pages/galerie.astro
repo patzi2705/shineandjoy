@@ -45,6 +45,11 @@ import "../styles/gallery.css";
 
     <dialog id="lightbox" class="lightbox">
       <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Schließen">x</button>
+
+      <!-- Pfeile -->
+      <button id="prev-btn" class="nav-btn left">‹</button>
+      <button id="next-btn" class="nav-btn right">›</button>
+
       <img id="lightbox-img" src="" alt="" />
     </dialog>
 
@@ -96,6 +101,8 @@ import "../styles/gallery.css";
       const lightboxImg = document.getElementById("lightbox-img");
       const closeButton = document.getElementById("lightbox-close");
       const galleryImages = Array.from(document.querySelectorAll(".card img"));
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
 
       let currentIndex = 0;
 
@@ -155,6 +162,20 @@ import "../styles/gallery.css";
           } else if (e.key === "ArrowLeft") {
             showPrev();
           }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showPrev();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showNext();
         });
       }
     });

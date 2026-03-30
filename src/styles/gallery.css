@@ -127,3 +127,35 @@
     cursor: pointer;
     color: #1d1d1d;
   }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    font-size: 2rem;
+
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-btn.left {
+    left: 10px;
+  }
+
+  .nav-btn.right {
+    right: 10px;
+  }
+
+  .nav-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
