@@ -44,6 +44,7 @@ import "../styles/gallery.css";
     </div>
 
     <dialog id="lightbox" class="lightbox">
+      <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Schließen">x</button>
       <img id="lightbox-img" src="" alt="" />
     </dialog>
 
@@ -93,16 +94,42 @@ import "../styles/gallery.css";
     window.addEventListener("DOMContentLoaded", () => {
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
+      const closeButton = document.getElementById("lightbox-close");
+      const galleryImages = Array.from(document.querySelectorAll(".card img"));
 
-      document.querySelectorAll(".card img").forEach((img) => {
+      let currentIndex = 0;
+
+      function openImage(index) {
+        if (!lightbox || !lightboxImg || !galleryImages[index]) return;
+        currentIndex = index;
+        lightboxImg.src = galleryImages[index].src;
+        lightboxImg.alt = galleryImages[index].alt;
+        lightbox.showModal();
+      }
+
+      function showNext() {
+        if (galleryImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        openImage(currentIndex);
+      }
+
+      function showPrev() {
+        if (galleryImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        openImage(currentIndex);
+      }
+
+      galleryImages.forEach((img, index) => {
         img.addEventListener("click", () => {
-          if (lightbox && lightboxImg) {
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightbox.showModal();
-          }
+          openImage(index);
         });
       });
+
+      if (closeButton && lightbox) {
+        closeButton.addEventListener("click", () => {
+          lightbox.close();
+        });
+      }
 
       if (lightbox) {
         lightbox.addEventListener("click", (e) => {
@@ -115,6 +142,18 @@ import "../styles/gallery.css";
 
           if (!clickedInside) {
             lightbox.close();
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (!lightbox.open) return;
+
+          if (e.key === "Escape") {
+            lightbox.close();
+          } else if (e.key === "ArrowRight") {
+            showNext();
+          } else if (e.key === "ArrowLeft") {
+            showPrev();
           }
         });
       }
